@@ -31,7 +31,7 @@ public class InventoryReconciliationJob {
         log.info("Starting nightly inventory reconciliation");
 
         List<InventoryItem> localItems = inventoryRepository.findAll();
-        Map<String, Integer> supplierLevelsBySku = supplierStockClient.fetchCurrentStockLevels().stream()
+        Map<String, Integer> supplierLevelsBySku = supplierStockClient.fetchSupplierStock().stream()
                 .collect(java.util.stream.Collectors.toMap(
                         SupplierStockLevel::sku, SupplierStockLevel::quantityAtSupplier));
 
