@@ -12,5 +12,6 @@ public record PaymentCompletedEvent(
         PaymentMethod method,
         String transactionReference,
         Instant completedAt
-        ) {
+) {
 }
+
