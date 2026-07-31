@@ -4,13 +4,11 @@
 -- ddl-auto=validate, meaning it fails fast on startup if this schema and the
 -- entities disagree - that mismatch is the point, it's the safety net).
 
-CREATE TABLE patients (
-    id              BIGSERIAL PRIMARY KEY,
-    full_name       VARCHAR(255) NOT NULL,
-    date_of_birth   DATE         NOT NULL,
-    phone_number    VARCHAR(20)  NOT NULL,
-    email           VARCHAR(255),
-    blood_group     VARCHAR(10),
-    address         VARCHAR(500),
-    CONSTRAINT uq_patients_phone_number UNIQUE (phone_number)
+CREATE TABLE inventory_items (
+    id                  BIGSERIAL PRIMARY KEY,
+    sku                 VARCHAR(100) NOT NULL,
+    medicine_name       VARCHAR(255) NOT NULL,
+    quantity_on_hand    INTEGER      NOT NULL,
+    reorder_threshold   INTEGER      NOT NULL,
+    CONSTRAINT uq_inventory_items_sku UNIQUE (sku)
 );
