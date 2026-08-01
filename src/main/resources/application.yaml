@@ -1,14 +1,17 @@
 server:
-  port: ${port}
+  port: ${PORT}
 
 spring:
+  profiles:
+    default: local
+
   application:
     name: carestack
 
   datasource:
-    url: ${db_url}
-    username: ${db_uname}
-    password: ${db_pswd}
+    url: ${DB_URL}
+    username: ${DB_UNAME}
+    password: ${DB_PSWD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -25,20 +28,20 @@ spring:
 
   flyway:
     enabled: true
-    locations: ${migration_location}
+    locations: ${MIGRATION_LOCATION}
     baseline-on-migrate: false
 
   data:
     redis:
-      host: ${redis_host}
-      port: ${redis_port}
-      timeout: ${redis_timeout}
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      timeout: ${REDIS_TMEOUT}
 
   cache:
     type: redis
 
   kafka:
-    bootstrap-servers: ${kafka_bs-server}
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JacksonJsonSerializer
